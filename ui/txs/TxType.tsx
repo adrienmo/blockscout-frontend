@@ -9,7 +9,7 @@ export interface Props {
   isLoading?: boolean;
 }
 
-const TYPES_ORDER = [ 'rootstock_remasc', 'rootstock_bridge', 'token_creation', 'contract_creation', 'token_transfer', 'contract_call', 'coin_transfer' ];
+const TYPES_ORDER = [ 'confidential_compute_request', 'rootstock_remasc', 'rootstock_bridge', 'token_creation', 'contract_creation', 'token_transfer', 'contract_call', 'coin_transfer' ];
 
 const TxType = ({ types, isLoading }: Props) => {
   const typeToShow = types.sort((t1, t2) => TYPES_ORDER.indexOf(t1) - TYPES_ORDER.indexOf(t2))[0];
@@ -21,6 +21,10 @@ const TxType = ({ types, isLoading }: Props) => {
     case 'contract_call':
       label = 'Contract call';
       colorScheme = 'blue';
+      break;
+    case 'confidential_compute_request':
+      label = 'CCR';
+      colorScheme = 'purple';
       break;
     case 'contract_creation':
       label = 'Contract creation';

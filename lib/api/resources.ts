@@ -202,8 +202,8 @@ export const RESOURCES = {
     path: '/api/v2/transactions/watchlist',
     filterFields: [ ],
   },
-  txs_execution_node: {
-    path: '/api/v2/transactions/execution-node/:hash',
+  txs_kettle_address: {
+    path: '/api/v2/transactions/kettle-address/:hash',
     pathParams: [ 'hash' as const ],
     filterFields: [ ],
   },
@@ -571,7 +571,7 @@ export interface ResourceError<T = unknown> {
 export type ResourceErrorAccount<T> = ResourceError<{ errors: T }>
 
 export type PaginatedResources = 'blocks' | 'block_txs' |
-'txs_validated' | 'txs_pending' | 'txs_watchlist' | 'txs_execution_node' |
+'txs_validated' | 'txs_pending' | 'txs_watchlist' | 'txs_kettle_address' |
 'tx_internal_txs' | 'tx_logs' | 'tx_token_transfers' | 'tx_state_changes' |
 'addresses' |
 'address_txs' | 'address_internal_txs' | 'address_token_transfers' | 'address_blocks_validated' | 'address_coin_balance' |
@@ -619,7 +619,7 @@ Q extends 'block_withdrawals' ? BlockWithdrawalsResponse :
 Q extends 'txs_validated' ? TransactionsResponseValidated :
 Q extends 'txs_pending' ? TransactionsResponsePending :
 Q extends 'txs_watchlist' ? TransactionsResponseWatchlist :
-Q extends 'txs_execution_node' ? TransactionsResponseValidated :
+Q extends 'txs_kettle_address' ? TransactionsResponseValidated :
 Q extends 'tx' ? Transaction :
 Q extends 'tx_internal_txs' ? InternalTransactionsResponse :
 Q extends 'tx_logs' ? LogsResponseTx :
