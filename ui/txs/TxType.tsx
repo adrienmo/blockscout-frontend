@@ -1,3 +1,4 @@
+import { Tooltip } from '@chakra-ui/react';
 import React from 'react';
 
 import type { TransactionType } from 'types/api/transaction';
@@ -9,7 +10,16 @@ export interface Props {
   isLoading?: boolean;
 }
 
-const TYPES_ORDER = [ 'confidential_compute_request', 'rootstock_remasc', 'rootstock_bridge', 'token_creation', 'contract_creation', 'token_transfer', 'contract_call', 'coin_transfer' ];
+const TYPES_ORDER = [
+  'confidential_compute_request',
+  'rootstock_remasc',
+  'rootstock_bridge',
+  'token_creation',
+  'contract_creation',
+  'token_transfer',
+  'contract_call',
+  'coin_transfer',
+];
 
 const TxType = ({ types, isLoading }: Props) => {
   const typeToShow = types.sort((t1, t2) => TYPES_ORDER.indexOf(t1) - TYPES_ORDER.indexOf(t2))[0];
@@ -56,11 +66,21 @@ const TxType = ({ types, isLoading }: Props) => {
 
   }
 
-  return (
-    <Tag colorScheme={ colorScheme } isLoading={ isLoading }>
-      { label }
-    </Tag>
-  );
+  if (typeToShow === 'confidential_compute_request') {
+    return (
+      <Tooltip label="Confidential Compute Request">
+        <Tag colorScheme={ colorScheme } isLoading={ isLoading }>
+          { label }
+        </Tag>
+      </Tooltip>
+    );
+  } else {
+    return (
+      <Tag colorScheme={ colorScheme } isLoading={ isLoading }>
+        { label }
+      </Tag>
+    );
+  }
 };
 
 export default TxType;
