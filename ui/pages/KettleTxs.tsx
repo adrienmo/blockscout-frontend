@@ -15,10 +15,10 @@ const KettleTxs = () => {
   const hash = getQueryParamString(router.query.hash);
 
   const query = useQueryWithPages({
-    resourceName: 'txs_execution_node',
+    resourceName: 'txs_kettle_address',
     pathParams: { hash },
     options: {
-      placeholderData: generateListStub<'txs_execution_node'>(TX, 50, { next_page_params: {
+      placeholderData: generateListStub<'txs_kettle_address'>(TX, 50, { next_page_params: {
         block_number: 9005713,
         index: 5,
         items_count: 50,
@@ -29,7 +29,7 @@ const KettleTxs = () => {
 
   return (
     <>
-      <PageTitle title="Computor transactions" withTextAd/>
+      <PageTitle title="Kettle transactions" withTextAd/>
       <AddressEntity address={{ hash }} mb={ 6 }/>
       <TxsContent
         query={ query }

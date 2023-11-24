@@ -228,15 +228,15 @@ const TxDetails = () => {
             </Skeleton>
           </DetailsInfoItem>
         ) }
-        { data.execution_node && (
+        { data.kettle_address && (
           <DetailsInfoItem
             title="Kettle"
             hint="Node that carried out the confidential computation"
             isLoading={ isPlaceholderData }
           >
             <AddressEntity
-              address={ data.execution_node }
-              href={ route({ pathname: '/txs/kettle/[hash]', query: { hash: data.execution_node.hash } }) }
+              address={ data.kettle_address }
+              href={ route({ pathname: '/txs/kettle/[hash]', query: { hash: data.kettle_address.hash } }) }
             />
           </DetailsInfoItem>
         ) }

@@ -57,7 +57,7 @@ export type Transaction = {
   op_withdrawal_status?: L2WithdrawalStatus;
   op_l1_transaction_hash?: string;
   // SUAVE fields
-  execution_node?: AddressParam | null;
+  kettle_address?: AddressParam | null;
   allowed_peekers?: Array<string>;
   wrapped?: Pick<Transaction, WrappedTransactionFields>;
   // Stability fields
@@ -113,6 +113,7 @@ export type TransactionType = 'rootstock_remasc' |
 'token_transfer' |
 'contract_creation' |
 'contract_call' |
+'confidential_compute_request' |
 'token_creation' |
 'coin_transfer'
 
