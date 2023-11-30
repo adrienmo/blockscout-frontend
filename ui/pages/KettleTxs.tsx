@@ -12,14 +12,14 @@ import TxsContent from 'ui/txs/TxsContent';
 const KettleTxs = () => {
   const router = useRouter();
 
-  const hash = getQueryParamString(router.query.hash);
+  const hash = router.query.hash && getQueryParamString(router.query.hash);
 
   const query = useQueryWithPages({
-    resourceName: 'txs_kettle_address',
+    resourceName: 'txs_kettle_transactions',
     pathParams: { hash },
     options: {
-      placeholderData: generateListStub<'txs_kettle_address'>(TX, 50, { next_page_params: {
-        block_number: 9005713,
+      placeholderData: generateListStub<'txs_kettle_transactions'>(TX, 50, { next_page_params: {
+        block_number: 0,
         index: 5,
         items_count: 50,
         filter: 'validated',
@@ -30,7 +30,7 @@ const KettleTxs = () => {
   return (
     <>
       <PageTitle title="Kettle transactions" withTextAd/>
-      <AddressEntity address={{ hash }} mb={ 6 }/>
+      { hash == null ? null : <AddressEntity address={{ hash }} mb={ 6 }/> }
       <TxsContent
         query={ query }
         showSocketInfo={ false }

@@ -19,6 +19,7 @@ import publicTagIcon from 'icons/publictags.svg';
 import apiDocsIcon from 'icons/restAPI.svg';
 import rpcIcon from 'icons/RPC.svg';
 import statsIcon from 'icons/stats.svg';
+import kettleIcon from 'icons/suave/kettle.svg';
 import tokensIcon from 'icons/token.svg';
 import topAccountsIcon from 'icons/top-accounts.svg';
 import transactionsIcon from 'icons/transactions.svg';
@@ -104,6 +105,14 @@ export default function useNavItems(): ReturnType {
           topAccounts,
           verifiedContracts,
         ].filter(Boolean),
+      ];
+    } else if (config.features.suave.isEnabled) {
+      blockchainNavItems = [
+        [
+          txs,
+          // eslint-disable-next-line max-len
+          { text: `Kettle Transactions`, nextRoute: { pathname: '/kettle-transactions' as const }, icon: kettleIcon, isActive: pathname === '/kettle-transactions' },
+        ],
       ];
     } else {
       blockchainNavItems = [

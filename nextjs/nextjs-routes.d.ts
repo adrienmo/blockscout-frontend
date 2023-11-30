@@ -31,6 +31,7 @@ declare module "nextjs-routes" {
     | StaticRoute<"/csv-export">
     | StaticRoute<"/graphiql">
     | StaticRoute<"/">
+    | StaticRoute<"/kettle-transactions">
     | StaticRoute<"/l2-deposits">
     | StaticRoute<"/l2-output-roots">
     | StaticRoute<"/l2-txn-batches">
