@@ -8,6 +8,7 @@ import ContractWrite from 'ui/address/contract/ContractWrite';
 
 export default function useContractTabs(data: Address | undefined) {
   return React.useMemo(() => {
+
     return [
       { id: 'contact_code', title: 'Code', component: <ContractCode addressHash={ data?.hash }/> },
       // this is not implemented in api yet

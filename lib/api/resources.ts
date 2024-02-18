@@ -39,7 +39,7 @@ import type { L2DepositsResponse, L2DepositsItem } from 'types/api/l2Deposits';
 import type { L2OutputRootsResponse } from 'types/api/l2OutputRoots';
 import type { L2TxnBatchesResponse } from 'types/api/l2TxnBatches';
 import type { L2WithdrawalsResponse } from 'types/api/l2Withdrawals';
-import type { LogsResponseTx, LogsResponseAddress } from 'types/api/log';
+import type { NetworkLogsResponseTx, LogsResponseTx, LogsResponseAddress } from 'types/api/log';
 import type { RawTracesResponse } from 'types/api/rawTrace';
 import type { SearchRedirectResult, SearchResult, SearchResultFilters, SearchResultItem } from 'types/api/search';
 import type { Counters, StatsCharts, StatsChart, HomeStats } from 'types/api/stats';
@@ -218,6 +218,11 @@ export const RESOURCES = {
   },
   tx_logs: {
     path: '/api/v2/transactions/:hash/logs',
+    pathParams: [ 'hash' as const ],
+    filterFields: [ ],
+  },
+  tx_network_logs: {
+    path: '/api/v2/transactions/:hash/network-logs',
     pathParams: [ 'hash' as const ],
     filterFields: [ ],
   },
@@ -572,7 +577,7 @@ export type ResourceErrorAccount<T> = ResourceError<{ errors: T }>
 
 export type PaginatedResources = 'blocks' | 'block_txs' |
 'txs_validated' | 'txs_pending' | 'txs_watchlist' | 'txs_kettle_transactions' |
-'tx_internal_txs' | 'tx_logs' | 'tx_token_transfers' | 'tx_state_changes' |
+'tx_internal_txs' | 'tx_logs' | 'tx_network_logs' | 'tx_token_transfers' | 'tx_state_changes' |
 'addresses' |
 'address_txs' | 'address_internal_txs' | 'address_token_transfers' | 'address_blocks_validated' | 'address_coin_balance' |
 'search' |
@@ -623,6 +628,7 @@ Q extends 'txs_kettle_transactions' ? TransactionsResponseValidated :
 Q extends 'tx' ? Transaction :
 Q extends 'tx_internal_txs' ? InternalTransactionsResponse :
 Q extends 'tx_logs' ? LogsResponseTx :
+Q extends 'tx_network_logs' ? NetworkLogsResponseTx :
 Q extends 'tx_token_transfers' ? TokenTransferResponse :
 Q extends 'tx_raw_trace' ? RawTracesResponse :
 Q extends 'tx_state_changes' ? TxStateChanges :

@@ -21,6 +21,7 @@ import TxDetails from 'ui/tx/TxDetails';
 import TxDetailsWrapped from 'ui/tx/TxDetailsWrapped';
 import TxInternals from 'ui/tx/TxInternals';
 import TxLogs from 'ui/tx/TxLogs';
+import TxNetworkLogs from 'ui/tx/TxNetworkLogs';
 import TxRawTrace from 'ui/tx/TxRawTrace';
 import TxState from 'ui/tx/TxState';
 import TxTokenTransfer from 'ui/tx/TxTokenTransfer';
@@ -49,6 +50,7 @@ const TransactionPageContent = () => {
     { id: 'logs', title: 'Logs', component: <TxLogs/> },
     { id: 'state', title: 'State', component: <TxState/> },
     { id: 'raw_trace', title: 'Raw trace', component: <TxRawTrace/> },
+    { id: 'network_logs', title: 'Network Logs', component: <TxNetworkLogs/> },
   ].filter(Boolean);
 
   const tabIndex = useTabIndexFromQuery(tabs);
